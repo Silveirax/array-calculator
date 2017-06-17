@@ -1,51 +1,98 @@
-void menu_matriz() {}
-void menu_vetor() {
-    int op;
+/* -------------- declaracao de funcoes -------------- */
+void menu_matriz();
+void menu_vetor();
+void menu();
 
-    printf("\t[ VETORES ]\n"
-           "1. Adicionar vetor\n"
-           "2. Exibir lista de vetores adicionados\n"
-           "3. Somar dois vetores\n"
-           "4. Somar todos os vetores\n"
-           "5. Multiplicar um dos vetores por um escalar\n"
-           "6. Realizar o produto escalar entre dois vetores\n"
-           "7. Voltar ao menu anterior\n"
-           "8. Sair do programa\n");
+/* ------------------ funcoes / menu ------------------ */
+/* menu de operacoes com matrizes */
+void menu_matriz() {
+    int op;
+    matriz *m1, *m2;
+
+    printf("\t[ MATRIZES ]\n"
+           "1. Ler matrizes\n"
+           "2. Somar duas matrizes\n"
+           "3. Multiplicar duas matrizes\n"
+           "4. Calcular a transposta de uma matriz\n"
+           "5. Calcular o determinante de uma matriz\n"
+           "6. Verificar se a matriz eh simetrica\n"
+           "7. Voltar ao menu anterior\n");
     do {
         printf("\nEscolha uma opcao: ");
         scanf(" %d", &op);
-        if (op<1 || op>8)
-            printf("Opcao invalida.\n");
+        if (op<1 || op>7)
+            printf("Opcao invalida.");
         printf("\n");
-    } while (op<1 || op>8);
+    } while (op<1 || op>7);
 
     switch (op) {
         case 1:
-            receber_vetor();
+            menu_matriz();
             break;
         case 2:
-            exibir_vetores();
+            menu_matriz();
             break;
         case 3:
-            soma_vetor();
+            menu_matriz();
             break;
         case 4:
-            somageral_vetor();
+            menu_matriz();
             break;
         case 5:
-            multiplica_vetor();
+            menu_matriz();
             break;
         case 6:
-            produto_escalar();
+            menu_matriz();
             break;
         case 7:
             menu();
             break;
-        case 8:
-            exit(1);
     }
 }
 
+/* menu de operacoes com vetores */
+void menu_vetor() {
+    int op, x;
+    vetor *v1, *v2;
+
+    printf("\t[ VETORES ]\n"
+           "1. Ler vetores\n"
+           "2. Somar dois vetores\n"
+           "3. Multiplicar um dos vetores por um escalar\n"
+           "4. Realizar o produto escalar entre dois vetores\n"
+           "5. Voltar ao menu anterior\n");
+    do {
+        printf("\nEscolha uma opcao: ");
+        scanf(" %d", &op);
+        if (op<1 || op>5)
+            printf("Opcao invalida.");
+        printf("\n");
+    } while (op<1 || op>5);
+
+    switch (op) {
+        case 1:
+            receber_vetor();
+            menu_vetor();
+            break;
+        case 2:
+            soma_vetor(v1, v2);
+            menu_vetor();
+            break;
+        case 3:
+            multiplica_vetor(v1, x);
+            menu_vetor();
+            break;
+        case 4:
+            produto_escalar(v1, v2);
+            menu_vetor();
+            break;
+        case 5:
+            menu();
+            break;
+    }
+}
+
+/* menu principal */
 void menu () {
     int op;
 
