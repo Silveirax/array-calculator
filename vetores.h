@@ -1,5 +1,4 @@
 /* ----------------- variaveis globais ----------------- */
-
 typedef struct vetor {
     int *v, elem; // ponteiro para o vetor e numero de elementos do vetor
     struct vetor *prox; // ponteiro auxiliar da lista encadeada
@@ -8,7 +7,32 @@ typedef struct vetor {
 vetor *inicio_v; // ponteiro para o inicio da lista de vetores
 
 
+/* -------------- declaracao de funcoes -------------- */
+int qtd_vetor();
+void somageral_vetor (int x);
+void produto_escalar (vetor *v1, vetor *v2);
+void multiplica_vetor (vetor *v1, int x);
+void soma_vetor (vetor *v1, vetor *v2);
+void exibir_vetores ();
+void adiciona_vetor (vetor* vet);
+void receber_vetor ();
+
+
 /* ------------------ funcoes / vetor ------------------ */
+
+/* retorna o numero de vetores ja adicionados a lista */
+int qtd_vetor () {
+    vetor *aux;
+    aux = inicio_v;
+    int qtd = 0;
+
+    while (aux != NULL) {
+        qtd++;
+        aux = aux->prox;
+    }
+
+    return qtd;
+}
 
 /* soma todos os vetores de tamanho x */
 void somageral_vetor (int x) {
@@ -131,16 +155,17 @@ void receber_vetor () {
     aux = (vetor*)malloc(sizeof(vetor));
     int i;
 
-    printf("Digite o numero de elementos do vetor: ");
+    printf(">> Adicionar vetor\n"
+           "Digite o numero de elementos do vetor: ");
     scanf(" %d", &aux->elem);
 
     aux->v = (int*)malloc(aux->elem*sizeof(int));
-    printf("\nDigite os valores das posicoes do vetor:\n");
+    printf("\nDigite os valores das posicoes do vetor:\n\n");
     for (i=0; i<aux->elem; i++) {
         printf("v[%d] = ", i);
         scanf(" %d", &aux->v[i]);
     }
-    printf("\n");
+    printf("\nVetor adicionado a lista com sucesso!\n\n");
 
     adiciona_vetor(aux);
 }
