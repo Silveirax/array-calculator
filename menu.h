@@ -111,9 +111,11 @@ void menu () {
     switch (op) {
         case 1:
             menu_vetor();
+            menu();
             break;
         case 2:
             menu_matriz();
+            menu();
             break;
         case 3:
             exit(1);
