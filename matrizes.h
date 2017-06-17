@@ -6,6 +6,14 @@ typedef struct matriz {
 
 matriz *inicio_m; // ponteiro para o inicio da lista de matrizes
 
+
+/* -------------- declaracao de funcoes -------------- */
+void soma_matriz(matriz* m1, matriz* m2);
+void exibir_matrizes();
+void adiciona_matriz(matriz* mat);
+void receber_matriz();
+
+
 /* ----------------- funcoes / matriz ----------------- */
 /* soma as matrizes m1 e m2 */
 void soma_matriz (matriz* m1, matriz* m2) {
